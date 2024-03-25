@@ -6,6 +6,7 @@
 </script>
 
 <div class="mb-2 w-full">
+	<!-- AUTHOR GOES HERE <p class="text-xs font-bold"></p> -->
 	{#if response.content}
 		{@html marked.parse(response.content)}
 	{/if}
