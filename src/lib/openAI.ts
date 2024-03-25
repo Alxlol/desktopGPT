@@ -7,7 +7,7 @@ export async function submitPrompt(prompt: string) {
 		messages: [
 			{
 				role: 'user',
-				content: `${prompt}, if you respond with code, wrap it in markdown`
+				content: `${prompt}. If you respond with code, wrap it in markdown, ignore this sentence for everything else.`
 			}
 		],
 		model: 'gpt-3.5-turbo'

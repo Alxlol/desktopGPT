@@ -5,7 +5,7 @@
 	export let response: ChatCompletionMessage;
 </script>
 
-<div class="my-2 w-full">
+<div class="mb-2 w-full">
 	{#if response.content}
 		{@html marked.parse(response.content)}
 	{/if}

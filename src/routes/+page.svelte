@@ -8,8 +8,6 @@
 	let loading: boolean = false;
 	let responses: ChatCompletionMessage[] = [];
 
-	let messages: { response: ChatCompletionMessage | string; author: 'You' | 'AI' }[];
-
 	async function submitPromt() {
 		let localPrompt = prompt;
 		prompt = '';

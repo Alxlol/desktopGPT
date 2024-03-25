@@ -18,6 +18,7 @@
 </script>
 
 <div bind:this={chat} class="flex-1 overflow-scroll overflow-x-hidden p-4">
+	<p>Hello, how may I help you today?</p>
 	{#each responses as response}
 		<p><Answer {response} /></p>
 	{/each}
