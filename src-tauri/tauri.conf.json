@@ -56,10 +56,10 @@
 		"windows": [
 			{
 				"fullscreen": false,
-				"height": 600,
+				"height": 750,
 				"resizable": true,
-				"title": "Lil' AI Chat",
-				"width": 500
+				"title": "DesktopGPT",
+				"width": 600
 			}
 		]
 	}

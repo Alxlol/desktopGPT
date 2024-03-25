@@ -4,25 +4,26 @@
 	import { submitPrompt } from '$lib/openAI';
 	import type { ChatCompletionMessage } from 'openai/resources/index.mjs';
 
-	// let chat: HTMLDivElement;
 	let prompt: string;
 	let loading: boolean = false;
 	let responses: ChatCompletionMessage[] = [];
 
 	async function submitPromt() {
-		if (prompt === '') {
+		let localPrompt = prompt;
+		prompt = '';
+		if (localPrompt === '') {
 			console.log('no message, return empty');
 			return;
-		} else if (prompt === '/clear') {
+		} else if (localPrompt === '/clear') {
 			responses = [];
 			return;
 		}
 		loading = true;
 		//Add Question
-		responses.push({ content: prompt, role: 'assistant' });
+		responses.push({ content: localPrompt, role: 'assistant' });
 		responses = [...responses];
 		//Get response
-		let response: ChatCompletionMessage = await submitPrompt(prompt);
+		let response: ChatCompletionMessage = await submitPrompt(localPrompt);
 		responses.push(response);
 		responses = [...responses];
 		loading = false;
