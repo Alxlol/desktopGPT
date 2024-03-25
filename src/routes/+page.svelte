@@ -4,7 +4,7 @@
 	import { submitPrompt } from '$lib/openAI';
 	import type { ChatCompletionMessage } from 'openai/resources/index.mjs';
 
-	let chat: HTMLDivElement;
+	// let chat: HTMLDivElement;
 	let prompt: string;
 	let loading: boolean = false;
 	let responses: ChatCompletionMessage[] = [];
@@ -13,17 +13,23 @@
 		if (prompt === '') {
 			console.log('no message, return empty');
 			return;
+		} else if (prompt === '/clear') {
+			responses = [];
+			return;
 		}
+		loading = true;
+		//Add Question
 		responses.push({ content: prompt, role: 'assistant' });
 		responses = [...responses];
 		//Get response
 		let response: ChatCompletionMessage = await submitPrompt(prompt);
 		responses.push(response);
 		responses = [...responses];
+		loading = false;
 	}
 </script>
 
-<main class="flex max-h-screen flex-1 flex-col border-2">
-	<Chat bind:chat bind:responses />
+<main class="flex max-h-screen flex-1 flex-col">
+	<Chat {loading} bind:responses />
 	<Prompt bind:prompt handleSubmit={submitPromt} />
 </main>

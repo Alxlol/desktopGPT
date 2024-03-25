@@ -1,9 +1,6 @@
 import OpenAI from 'openai';
-import type { ChatCompletionMessage } from 'openai/resources/index.mjs';
 
-let apiKey = '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';
-
-const openai = new OpenAI({ apiKey: apiKey, dangerouslyAllowBrowser: true });
+const openai = new OpenAI({ apiKey: import.meta.env.VITE_API_KEY, dangerouslyAllowBrowser: true });
 
 export async function submitPrompt(prompt: string) {
 	const resp = await openai.chat.completions.create({

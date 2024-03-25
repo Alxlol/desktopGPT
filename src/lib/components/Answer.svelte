@@ -4,6 +4,6 @@
 	export let response: ChatCompletionMessage;
 </script>
 
-<div class="my-4">
+<div class="my-2">
 	<p>{response.content}</p>
 </div>
