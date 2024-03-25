@@ -11,5 +11,5 @@
 		class="w-full rounded-sm border-none bg-neutral-700 p-2 outline-none"
 		type="text"
 	/>
-	<button class="rounded-sm bg-orange-500 px-6 hover:bg-orange-400">Submit</button>
+	<button class="rounded-sm bg-blue-500 px-6 hover:bg-blue-400">🤖</button>
 </form>
