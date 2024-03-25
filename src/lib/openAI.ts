@@ -4,7 +4,12 @@ const openai = new OpenAI({ apiKey: import.meta.env.VITE_API_KEY, dangerouslyAll
 
 export async function submitPrompt(prompt: string) {
 	const resp = await openai.chat.completions.create({
-		messages: [{ role: 'user', content: `${prompt}` }],
+		messages: [
+			{
+				role: 'user',
+				content: `${prompt}, if you respond with code, wrap it in markdown`
+			}
+		],
 		model: 'gpt-3.5-turbo'
 	});
 
