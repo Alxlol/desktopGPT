@@ -1,14 +1,16 @@
 <script lang="ts">
-	import type { ChatCompletionMessage } from 'openai/resources/index.mjs';
 	import { marked } from 'marked';
+	import type { ChatMessage } from '$lib/types';
 
-	export let response: ChatCompletionMessage;
+	export let message: ChatMessage;
 </script>
 
 <div class="mb-2 w-full">
-	<!-- AUTHOR GOES HERE <p class="text-xs font-bold"></p> -->
-	{#if response.content}
-		{@html marked.parse(response.content)}
+	<p class="text-xs {message.author === 'AI' ? 'text-orange-500' : 'text-blue-500'}">
+		{message.author === 'AI' ? 'AI' : 'You'}
+	</p>
+	{#if message.message.content}
+		{@html marked.parse(message.message.content)}
 	{/if}
 </div>
 
@@ -22,10 +24,10 @@
 		padding: 1rem;
 		width: 100%;
 		display: flex;
-		background-color: grey;
+		background-color: rgb(95, 95, 95);
 		padding: 1.2rem;
 		width: 100%;
-		border-radius: 1rem;
+		border-radius: 0.2rem;
 		overflow: auto;
 		margin-block: 1rem;
 	}

@@ -2,11 +2,12 @@
 	import Chat from '$lib/components/Chat.svelte';
 	import Prompt from '$lib/components/Prompt.svelte';
 	import { submitPrompt } from '$lib/openAI';
+	import type { ChatMessage } from '$lib/types';
 	import type { ChatCompletionMessage } from 'openai/resources/index.mjs';
 
 	let prompt: string;
 	let loading: boolean = false;
-	let responses: ChatCompletionMessage[] = [];
+	let messages: ChatMessage[] = [];
 
 	async function submitPromt() {
 		let localPrompt = prompt;
@@ -15,22 +16,22 @@
 			console.log('no message, return empty');
 			return;
 		} else if (localPrompt === '/clear') {
-			responses = [];
+			messages = [];
 			return;
 		}
 		loading = true;
 		//Add Question
-		responses.push({ content: localPrompt, role: 'assistant' });
-		responses = [...responses];
+		messages.push({ message: { content: localPrompt, role: 'assistant' }, author: 'User' });
+		messages = [...messages];
 		//Get response
 		let response: ChatCompletionMessage = await submitPrompt(localPrompt);
-		responses.push(response);
-		responses = [...responses];
+		messages.push({ message: response, author: 'AI' });
+		messages = [...messages];
 		loading = false;
 	}
 </script>
 
 <main class="flex max-h-screen flex-1 flex-col">
-	<Chat {loading} bind:responses />
+	<Chat {loading} bind:messages />
 	<Prompt bind:prompt handleSubmit={submitPromt} />
 </main>
