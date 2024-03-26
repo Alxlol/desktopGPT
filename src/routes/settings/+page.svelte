@@ -2,6 +2,7 @@
 	import GotoButton from '$lib/components/utils/GotoButton.svelte';
 
 	let apiKey: string = '';
+	let name: string = '';
 </script>
 
 <div class="flex items-center justify-between p-4">
@@ -12,6 +13,15 @@
 	<form class="mb-4 flex flex-1 flex-col justify-between">
 		<div class="flex flex-col gap-4">
 			<div class="flex flex-col">
+				<label for="name">Your Name</label>
+				<input
+					class="w-full rounded-sm border-none bg-neutral-700 p-2 outline-none"
+					bind:value={name}
+					id="name"
+					type="text"
+				/>
+			</div>
+			<div class="flex flex-col">
 				<label for="apikey">API Key</label>
 				<input
 					class="w-full rounded-sm border-none bg-neutral-700 p-2 outline-none"
@@ -20,6 +30,7 @@
 					type="text"
 				/>
 			</div>
+
 			<!-- <div class="flex flex-col">
 				<label for="theme">Theme</label>
 				<select id="theme">
