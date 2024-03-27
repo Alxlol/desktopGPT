@@ -1,8 +1,11 @@
 <script lang="ts">
 	import GotoButton from '$lib/components/utils/GotoButton.svelte';
+	import { loadUserSettings, updateUserSettings, store_userSettings } from '$lib/userSettings';
 
-	let apiKey: string = '';
-	let name: string = '';
+	loadUserSettings();
+
+	let apiKey: string | null = $store_userSettings?.apiKey;
+	let name: string | null = $store_userSettings?.name;
 </script>
 
 <div class="flex items-center justify-between p-4">
@@ -30,15 +33,17 @@
 					type="text"
 				/>
 			</div>
-
-			<!-- <div class="flex flex-col">
-				<label for="theme">Theme</label>
-				<select id="theme">
-					<option value="none">None</option>
-					<option value="pirate">Pirate</option>
-				</select>
-			</div> -->
 		</div>
-		<button class="bg-blue-500 py-2">Save Settings</button>
+		<div>
+			<p>saved user settings:</p>
+			<p>{$store_userSettings?.name}</p>
+			<p>{$store_userSettings?.apiKey}</p>
+		</div>
+		<div class="flex w-full gap-20">
+			<button on:click={() => updateUserSettings({ name, apiKey })} class="w-full bg-blue-500 py-2"
+				>Save Settings</button
+			>
+			<button on:click={loadUserSettings} class="w-full bg-blue-500 py-2">Get Settings</button>
+		</div>
 	</form>
 </main>

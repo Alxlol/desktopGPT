@@ -4,7 +4,7 @@
 </script>
 
 {#if loading}
-	<div class="my-2 flex items-center justify-center">
+	<div class="my-6 flex items-center justify-center">
 		<Icon width="30" height="30" icon="line-md:loading-twotone-loop" />
 	</div>
 {/if}
