@@ -8,14 +8,13 @@ type UserSettings = {
 export const store_userSettings = writable<UserSettings>();
 
 export function updateUserSettings(userSettings: UserSettings) {
-	if (userSettings.apiKey && userSettings.name) {
-		store_userSettings.set({ name: userSettings.name, apiKey: userSettings.apiKey });
+	if (userSettings.name != null) {
 		localStorage.setItem('name', userSettings.name);
-		localStorage.setItem('apiKey', userSettings.apiKey);
-		console.log('saving user settings...');
-	} else {
-		console.log('no values, nothing will be saved');
 	}
+	if (userSettings.apiKey != null) {
+		localStorage.setItem('apiKey', userSettings.apiKey);
+	}
+	store_userSettings.set({ name: userSettings.name, apiKey: userSettings.apiKey });
 }
 
 export function loadUserSettings() {
@@ -24,5 +23,5 @@ export function loadUserSettings() {
 		apiKey: localStorage.getItem('apiKey')
 	};
 	store_userSettings.set(userSettings);
-	console.log('loading user settings');
+	console.log('loading user settings', userSettings);
 }
