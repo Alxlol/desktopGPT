@@ -1,7 +1,7 @@
 <script lang="ts">
-	import ExtraPrompts from '$lib/components/settings/ExtraPrompts.svelte';
 	import GotoButton from '$lib/components/utils/GotoButton.svelte';
 	import { updateUserSettings, store_userSettings } from '$lib/userSettings';
+	import { open } from '@tauri-apps/api/shell';
 
 	let apiKey: string | null = $store_userSettings?.apiKey;
 	let name: string | null = $store_userSettings?.name;
@@ -9,6 +9,10 @@
 	function handleValueChange() {
 		updateUserSettings({ name, apiKey });
 	}
+
+	const openAPIKeyPage = () => {
+		open('https://platform.openai.com/api-keys');
+	};
 </script>
 
 <div class="flex items-center justify-between p-4">
@@ -27,8 +31,10 @@
 					id="apikey"
 					type="text"
 				/>
+				<p class="text-sm italic">
+					Go to https://platform.openai.com/api-keys, create new key, copy and paste.
+				</p>
 			</div>
-			<ExtraPrompts />
 		</div>
 	</form>
 </main>
