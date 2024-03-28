@@ -1,4 +1,5 @@
 <script lang="ts">
+	import ExtraPrompts from '$lib/components/settings/ExtraPrompts.svelte';
 	import GotoButton from '$lib/components/utils/GotoButton.svelte';
 	import { updateUserSettings, store_userSettings } from '$lib/userSettings';
 
@@ -27,6 +28,7 @@
 					type="text"
 				/>
 			</div>
+			<ExtraPrompts />
 		</div>
 	</form>
 </main>

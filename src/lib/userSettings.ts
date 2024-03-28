@@ -8,11 +8,9 @@ type UserSettings = {
 export const store_userSettings = writable<UserSettings>();
 
 export function updateUserSettings(userSettings: UserSettings) {
-	if (userSettings.name != null) {
-		localStorage.setItem('name', userSettings.name);
-	}
 	if (userSettings.apiKey != null) {
 		localStorage.setItem('apiKey', userSettings.apiKey);
+		console.log('updating user settings', userSettings.apiKey);
 	}
 	store_userSettings.set({ name: userSettings.name, apiKey: userSettings.apiKey });
 }

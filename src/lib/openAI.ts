@@ -1,6 +1,16 @@
 import OpenAI from 'openai';
 
-const openai = new OpenAI({ apiKey: import.meta.env.VITE_API_KEY, dangerouslyAllowBrowser: true });
+let openai = new OpenAI({
+	apiKey: localStorage.getItem('apiKey') as string | undefined,
+	dangerouslyAllowBrowser: true
+});
+
+export function restartOpenAIClient() {
+	openai = new OpenAI({
+		apiKey: localStorage.getItem('apiKey') as string | undefined,
+		dangerouslyAllowBrowser: true
+	});
+}
 
 export async function submitPrompt(prompt: string) {
 	let fullPrompt = `${prompt}. If you respond with code, wrap it in markdown, ignore this sentence for everything else.`;
