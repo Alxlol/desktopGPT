@@ -1,18 +1,20 @@
 <script lang="ts">
 	import GotoButton from '$lib/components/utils/GotoButton.svelte';
+	import { restartOpenAIClient, validateKey } from '$lib/openAI';
 	import { updateUserSettings, store_userSettings } from '$lib/userSettings';
-	import { open } from '@tauri-apps/api/shell';
 
 	let apiKey: string | null = $store_userSettings?.apiKey;
 	let name: string | null = $store_userSettings?.name;
+	let correctKey: boolean = validateKey(apiKey);
 
 	function handleValueChange() {
+		correctKey = validateKey(apiKey);
+		console.log(correctKey);
 		updateUserSettings({ name, apiKey });
+		if (correctKey === true) {
+			restartOpenAIClient();
+		}
 	}
-
-	const openAPIKeyPage = () => {
-		open('https://platform.openai.com/api-keys');
-	};
 </script>
 
 <div class="flex items-center justify-between p-4">
@@ -25,14 +27,16 @@
 			<div class="flex flex-col">
 				<label for="apikey">API Key</label>
 				<input
-					class="w-full rounded-sm border-none bg-neutral-700 p-2 outline-none"
+					class="w-full rounded-sm border-none bg-neutral-700 p-2 outline-none {correctKey
+						? 'outline outline-1 outline-green-500'
+						: 'outline outline-1 outline-red-500'}"
 					bind:value={apiKey}
 					on:input={handleValueChange}
 					id="apikey"
 					type="text"
 				/>
-				<p class="text-sm italic">
-					Go to https://platform.openai.com/api-keys, create new key, copy and paste.
+				<p class="mt-1 text-sm italic">
+					Go to https://platform.openai.com/api-keys, create a new API key, copy and paste it here.
 				</p>
 			</div>
 		</div>

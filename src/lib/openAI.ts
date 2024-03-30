@@ -6,6 +6,7 @@ let openai = new OpenAI({
 });
 
 export function restartOpenAIClient() {
+	console.log('restarting openAI client with apiKey ', localStorage.getItem('apiKey'));
 	openai = new OpenAI({
 		apiKey: localStorage.getItem('apiKey') as string | undefined,
 		dangerouslyAllowBrowser: true
@@ -26,4 +27,23 @@ export async function submitPrompt(prompt: string) {
 		model: 'gpt-3.5-turbo'
 	});
 	return resp.choices[0].message;
+}
+
+export function validateKey(str: string | null) {
+	if (str === null) {
+		return false;
+	}
+
+	if (str.length !== 51) {
+		return false;
+	}
+
+	const prefix = str.slice(0, 3);
+	const suffix = str.slice(23, 31);
+
+	if (prefix !== 'sk-' || suffix !== 'T3BlbkFJ') {
+		return false;
+	}
+
+	return true;
 }
