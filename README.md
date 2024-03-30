@@ -15,5 +15,5 @@ npm install
 npm run tauri dev
 
 # build install file - requires C++ build tools and Rust installed
-npm tauri build
+npm run tauri build
 ```
