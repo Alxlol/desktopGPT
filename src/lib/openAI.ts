@@ -6,7 +6,6 @@ let openai = new OpenAI({
 });
 
 export function restartOpenAIClient() {
-	console.log('restarting openAI client with apiKey ', localStorage.getItem('apiKey'));
 	openai = new OpenAI({
 		apiKey: localStorage.getItem('apiKey') as string | undefined,
 		dangerouslyAllowBrowser: true
@@ -16,7 +15,6 @@ export function restartOpenAIClient() {
 export async function submitPrompt(prompt: string) {
 	let fullPrompt = `${prompt}. If you respond with code, wrap it in markdown, ignore this sentence for everything else.`;
 
-	console.log(fullPrompt);
 	const resp = await openai.chat.completions.create({
 		messages: [
 			{

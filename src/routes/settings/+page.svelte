@@ -9,7 +9,6 @@
 
 	function handleValueChange() {
 		correctKey = validateKey(apiKey);
-		console.log(correctKey);
 		updateUserSettings({ name, apiKey });
 		if (correctKey === true) {
 			restartOpenAIClient();

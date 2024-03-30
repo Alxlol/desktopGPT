@@ -13,7 +13,6 @@
 		let localPrompt = prompt;
 		prompt = '';
 		if (localPrompt === '') {
-			console.log('no message, return empty');
 			return;
 		} else if (localPrompt === '/clear') {
 			messages = [];
