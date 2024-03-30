@@ -17,3 +17,6 @@ npm run tauri dev
 # build install file - requires C++ build tools and Rust installed
 npm run tauri build
 ```
+## Future features
+- Session/conversation contex
+- Prompt history
