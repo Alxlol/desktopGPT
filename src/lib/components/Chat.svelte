@@ -19,7 +19,7 @@
 	afterUpdate(scrollToBottom);
 </script>
 
-<div bind:this={chat} class="flex-1 overflow-scroll overflow-x-hidden p-4">
+<div bind:this={chat} class="flex-1 overflow-auto overflow-x-hidden p-4">
 	<div class="mb-2 flex items-center justify-between">
 		<div>
 			<p class="text-xs text-orange-500">AI</p>

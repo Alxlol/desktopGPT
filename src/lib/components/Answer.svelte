@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { ChatMessage } from '$lib/types';
 	import { marked } from 'marked';
+
 	export let message: ChatMessage;
 </script>
 

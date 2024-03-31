@@ -11,6 +11,7 @@
 
 	async function submitPromt() {
 		let localPrompt = prompt;
+		console.log(localPrompt);
 		prompt = '';
 		if (localPrompt === '') {
 			return;
