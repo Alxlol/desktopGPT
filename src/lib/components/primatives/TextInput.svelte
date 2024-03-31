@@ -6,6 +6,7 @@
 <input
 	bind:value
 	{id}
+	on:keydown
 	on:input
 	class="w-full rounded-lg border-none bg-neutral-800 p-2 outline-none"
 	type="text"
