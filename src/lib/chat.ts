@@ -1,12 +1,19 @@
-import { writable } from 'svelte/store';
+import { get, writable } from 'svelte/store';
 
-type Message = {
+export type ChatEntry = {
 	message: string;
 	author: 'AI' | 'User';
 };
 
-type Chat = {
-	messages: Message[];
-};
+export const chat = writable<ChatEntry[]>([]);
 
-export const chat = writable<Chat>({ messages: [] });
+export function addChatEntry(message: ChatEntry) {
+	chat.update((current) => {
+		return [...current, message];
+	});
+	console.log(JSON.stringify(get(chat)));
+}
+
+export function clearChat() {
+	chat.set([]);
+}

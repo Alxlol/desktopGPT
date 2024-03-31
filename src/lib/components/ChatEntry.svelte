@@ -1,16 +1,16 @@
 <script lang="ts">
-	import type { ChatMessage } from '$lib/types';
+	import type { ChatEntry } from '$lib/chat';
 	import { marked } from 'marked';
 
-	export let message: ChatMessage;
+	export let chatEntry: ChatEntry;
 </script>
 
 <div class="mb-2 w-full">
-	<p class="text-xs {message.author === 'AI' ? 'text-orange-500' : 'text-blue-500'}">
-		{message.author === 'AI' ? 'AI' : 'You'}
+	<p class="text-xs {chatEntry.author === 'AI' ? 'text-orange-500' : 'text-blue-500'}">
+		{chatEntry.author === 'AI' ? 'AI' : 'You'}
 	</p>
-	{#if message.message.content}
-		{@html marked.parse(message.message.content)}
+	{#if chatEntry.message}
+		{@html marked.parse(chatEntry.message)}
 	{/if}
 </div>
 
