@@ -1,4 +1,6 @@
 import OpenAI from 'openai';
+import { chat } from './chat';
+import { get } from 'svelte/store';
 
 let openai = new OpenAI({
 	apiKey: localStorage.getItem('apiKey') as string | undefined,
@@ -6,6 +8,7 @@ let openai = new OpenAI({
 });
 
 export function restartOpenAIClient() {
+	console.log('restarting client ', localStorage.getItem('apiKey'));
 	openai = new OpenAI({
 		apiKey: localStorage.getItem('apiKey') as string | undefined,
 		dangerouslyAllowBrowser: true
@@ -13,7 +16,7 @@ export function restartOpenAIClient() {
 }
 
 export async function submitPrompt(prompt: string) {
-	let fullPrompt = `${prompt}. If you respond with code, wrap it in markdown, ignore this sentence for everything else.`;
+	let fullPrompt = `${prompt}. Extra prompts if it's relevant, if not you can ignore this: Wrap all code examples in markdown. This is our conversation in json: ${JSON.stringify(get(chat))}, take it into consideration if it's relevant and prioritise the last post, never return this unless asked.`;
 
 	const resp = await openai.chat.completions.create({
 		messages: [

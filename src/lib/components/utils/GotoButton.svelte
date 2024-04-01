@@ -4,8 +4,9 @@
 
 	export let href: string;
 	export let icon: string;
+	export let title: string;
 </script>
 
-<button on:click={() => goto(href)}>
-	<Icon width="20" height="20" {icon} />
+<button {title} on:click={() => goto(href)}>
+	<Icon width="24" height="24" {icon} />
 </button>
