@@ -20,5 +20,6 @@ npm run tauri build
 
 ## Future features
 
-~- Session/conversation contex~
-~- Prompt history~
+~- Session/conversation contex
+
+- Prompt history~
