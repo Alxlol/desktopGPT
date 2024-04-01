@@ -8,6 +8,6 @@
 	{id}
 	on:keydown
 	on:input
-	class="w-full rounded-lg border-none bg-neutral-800 p-2 outline-none"
+	class="w-full rounded-xl border-none bg-neutral-800 p-2 px-4 outline-none"
 	type="text"
 />

@@ -12,6 +12,10 @@
 	async function submitPromt() {
 		let localPrompt = prompt;
 		prompt = '';
+		if (error) {
+			error = '';
+		}
+
 		if (localPrompt === '') {
 			return;
 		} else if (localPrompt === '/clear') {

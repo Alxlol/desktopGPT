@@ -16,7 +16,7 @@ export function restartOpenAIClient() {
 }
 
 export async function submitPrompt(prompt: string) {
-	let fullPrompt = `${prompt}. Wrap all code snippets in markdown. For context, this is our conversation in json: ${JSON.stringify(get(chat))}, take it into consideration if it's relevant.`;
+	let fullPrompt = `${prompt}. Extra prompts if it's relevant, if not you can ignore this: Wrap all code examples in markdown. This is our conversation in json: ${JSON.stringify(get(chat))}, take it into consideration if it's relevant and prioritise the last post, never return this unless asked.`;
 
 	const resp = await openai.chat.completions.create({
 		messages: [

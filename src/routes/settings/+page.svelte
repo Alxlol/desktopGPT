@@ -19,7 +19,7 @@
 
 <div class="flex items-center justify-between p-4">
 	<p class="text-2xl font-bold">Settings</p>
-	<GotoButton href="/" icon="mdi:home" />
+	<GotoButton title={'Home'} href="/" icon="mdi:home" />
 </div>
 <main class="flex flex-1 px-4">
 	<form class="mb-4 flex flex-1 flex-col justify-between">
