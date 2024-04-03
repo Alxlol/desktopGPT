@@ -37,7 +37,6 @@
 </script>
 
 <main class="flex max-h-screen flex-1 flex-col">
-	<NavBar />
 	<Chat {loading} {error} />
 	<Prompt bind:prompt handleSubmit={submitPromt} />
 </main>
