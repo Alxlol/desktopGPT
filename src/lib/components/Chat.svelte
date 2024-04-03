@@ -4,6 +4,7 @@
 	import Loader from './Loader.svelte';
 	import { store_userSettings } from '$lib/userSettings';
 	import { chat } from '$lib/chat';
+	import NavBar from './nav/NavBar.svelte';
 
 	export let loading: boolean;
 	export let error: string;
@@ -20,7 +21,7 @@
 	});
 </script>
 
-<div bind:this={chatElement} class="flex-1 overflow-auto overflow-x-hidden px-4">
+<div bind:this={chatElement} class="flex-1 overflow-auto overflow-x-hidden p-4">
 	<div class="mb-2 flex items-center justify-between">
 		<div>
 			<p class="text-xs text-orange-500">AI</p>
@@ -30,12 +31,7 @@
 					: 'It looks like you havent provided an API key yet, you can do so by clicking the settings button to the right'}
 			</p>
 		</div>
-		<!-- <div class="flex gap-2">
-			<button title="Reset conversation" class="flex" on:click={clearChat}>
-				<Icon width="24" height="24" icon="radix-icons:reset" />
-			</button>
-			<GotoButton title={'Settings'} icon="mdi:settings" href="/settings" />
-		</div> -->
+		<NavBar />
 	</div>
 	{#each $chat as chatEntry}
 		<ChatEntry {chatEntry} />

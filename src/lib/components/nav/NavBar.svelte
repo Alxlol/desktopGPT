@@ -5,7 +5,7 @@
 	import { clearChat } from '$lib/chat';
 </script>
 
-<nav class="flex items-center justify-end p-4 py-2">
+<nav class="flex items-center justify-between p-4 py-3">
 	<!-- <div class="flex items-center gap-2">
 		<img class="w-8" src="app-icon.png" alt="" />
 		<p class="font-bold">DesktopGPT</p>
