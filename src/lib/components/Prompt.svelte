@@ -27,9 +27,9 @@
 
 <form on:submit|preventDefault={handleSubmit} class="flex h-full gap-4 p-4">
 	<TextInput bind:value={prompt} on:input={resetCycler} on:keydown={(e) => handleKeyDown(e)} />
-	<button class="rounded-xl bg-orange-500 px-6 transition-all hover:bg-orange-400">
-		<div class="group w-8">
-			<img class="transition-all group-hover:scale-150" src="128x128.png" alt="" />
+	<button class="">
+		<div class="group w-10">
+			<img class="transition-all group-hover:scale-110" src="app-icon.png" alt="" />
 		</div>
 	</button>
 </form>

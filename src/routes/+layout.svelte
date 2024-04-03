@@ -2,6 +2,7 @@
 	import '../app.pcss';
 	import { onMount } from 'svelte';
 	import { loadUserSettings } from '$lib/userSettings';
+	import NavBar from '$lib/components/nav/NavBar.svelte';
 
 	onMount(() => {
 		loadUserSettings();

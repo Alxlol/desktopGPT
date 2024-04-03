@@ -2,6 +2,7 @@
 	import { addChatEntry, clearChat } from '$lib/chat';
 	import Chat from '$lib/components/Chat.svelte';
 	import Prompt from '$lib/components/Prompt.svelte';
+	import NavBar from '$lib/components/nav/NavBar.svelte';
 	import { submitPrompt } from '$lib/openAI';
 	import type { ChatCompletionMessage } from 'openai/resources/index.mjs';
 
@@ -36,6 +37,7 @@
 </script>
 
 <main class="flex max-h-screen flex-1 flex-col">
+	<NavBar />
 	<Chat {loading} {error} />
 	<Prompt bind:prompt handleSubmit={submitPromt} />
 </main>
