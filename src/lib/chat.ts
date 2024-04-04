@@ -17,7 +17,9 @@ export function addChatEntry(message: ChatEntry) {
 	});
 }
 
-export function loadChat(index: number) {}
+export function loadChat(index: number) {
+	//Loads a chat from conversations based on an array index
+}
 
 export function clearChat() {
 	chat.set([]);
