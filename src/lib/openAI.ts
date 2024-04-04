@@ -16,7 +16,7 @@ export function restartOpenAIClient() {
 }
 
 export async function submitPrompt(prompt: string) {
-	let fullPrompt = `${prompt}. Wrap all code examples and code snippets in markdown, nothing else. This is our conversation in json: ${JSON.stringify(get(chat))}, use this for contex if relevant, never return this unless asked.`;
+	let fullPrompt = `${prompt}. This is our conversation: ${JSON.stringify(get(chat))}, use this for contex if it's relevant, if not ignore it. Wrap all code examples and code snippets in markdown, you can ignore this for everything else.`;
 
 	const resp = await openai.chat.completions.create({
 		messages: [
