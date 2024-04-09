@@ -24,10 +24,10 @@
 		padding: 1rem;
 		width: 100%;
 		display: flex;
-		background-color: rgb(95, 95, 95);
+		background-color: rgb(44, 44, 44);
 		padding: 1.2rem;
 		width: 100%;
-		border-radius: 0.2rem;
+		border-radius: 0.8rem;
 		overflow: auto;
 		margin-block: 1rem;
 	}
